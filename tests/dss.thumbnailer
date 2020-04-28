@@ -1,0 +1,14 @@
+# created by swyter <swyterzone@gmail.com>, requires imagemagick
+[Thumbnailer Entry]
+TryExec=convert
+
+# -> comment out the second version to use the provided thumbnail
+# -> size, instead of hardcoding them to 32px, which is faster.
+Exec=convert -thumbnail 32 %i png:%o
+#Exec=convert -thumbnail %s %i png:%o
+
+# -> this is just for testing
+#Exec=sh -c 'echo "%s %i %o" >> /tmp/thumbs.txt'
+
+MimeType=image/x-dds
+

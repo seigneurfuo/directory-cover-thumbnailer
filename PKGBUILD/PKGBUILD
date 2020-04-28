@@ -1,0 +1,22 @@
+# Maintainer: Agnésa Théo <seigneurfuo@gmail.com
+
+pkgname=directory-cover-thumbnailer
+pkgver=1.03
+pkgrel=1
+pkgdesc="Affiche l'image \"cover.<png | jpg>\" en tant que mignature du dossier"
+arch=('i686' 'x86_64')
+license=('NONE')
+groups=("★ seigneurfuo: Paquets persos")
+depends=(python python-pillow)
+source=(cover.py cover.thumbnailer)
+md5sums=('c676b2826e677c606e76b9e0fce7c26d'
+         'cdfb7df19065d65d722bcb3fa8063a5f')
+
+package() 
+{
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/thumbnailers"
+
+    install -Dm644 "cover.py" "${pkgdir}/usr/bin/cover.py"
+    install -Dm644 "cover.thumbnailer" "${pkgdir}/usr/share/thumbnailers/cover.thumbnailer"
+}
