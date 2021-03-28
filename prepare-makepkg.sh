@@ -1,3 +1,3 @@
 #!/bin/bash
-cd "PKGBUILD"
-ln -s "../src/cover.py" .
+cd "dist/PKGBUILD"
+ln -s "../../src/cover.py" .
