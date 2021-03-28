@@ -1,7 +1,5 @@
 #!/bin/env python3
 
-# Date de dernière modification: 2020.04.28
-
 from sys import argv
 from os import path, listdir
 from urllib.parse import unquote
@@ -11,27 +9,31 @@ try:
 except ImportError:
     import Image
 
-allowed_covers_names = ["cover", "Cover"]
-allowed_covers_extensions = ['.png', '.jpg', '.jpeg']
 
-# Which file are we working with?
-folder_path = argv[1]
+available_covers_names = ["cover", "Cover"]
+available_covers_extensions = ['.png', '.jpg', '.jpeg']
+excludes = ("trash://")
 
-# Remove "file://"
+
+folder_path = argv[1] # Which file are we working with?
+output_file = argv[2] # Where do does the file have to be saved?
+size = int(argv[3]) # Required size?
+
+
+if folder_path.startswith(excludes):
+    exit(0)
+
+# Remove "file://" and convert url to path
 folder_path = folder_path.replace('file://', '')
 folder_path = unquote(folder_path)
 
-# Where do does the file have to be saved?
-output_file = argv[2]
+covers = [cover for cover in listdir(folder_path) if path.splitext(cover)[0] in available_covers_names and path.splitext(cover)[1] in available_covers_extensions]
 
-# Required size?
-size = int(argv[3])
-
-cover_filename = [cover for cover in listdir(folder_path) if path.splitext(cover)[0] in allowed_covers_names and path.splitext(cover)[1] in allowed_covers_extensions]
+# print(folder_path, ":", covers)
 
 # Pure python convert - We can also use imagemagick
-if cover_filename:
-    cover_filepath = path.join(folder_path, cover_filename[0])
+if covers and path.isfile(path.join(folder_path, covers[0])):
+    cover_filepath = path.join(folder_path, covers[0])
 
     picture = Image.open(cover_filepath)
     picture.thumbnail((size, size), Image.ANTIALIAS)
