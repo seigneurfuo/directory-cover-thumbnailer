@@ -36,7 +36,7 @@ if covers and path.isfile(path.join(folder_path, covers[0])):
     cover_filepath = path.join(folder_path, covers[0])
 
     picture = Image.open(cover_filepath)
-    picture.thumbnail((size, size), Image.ANTIALIAS)
+    picture.thumbnail((size, size), Image.Resampling.LANCZOS)
     # if im.mode == "CMYK":
     # im = im.convert("RGB")
     picture.save(output_file, "PNG")

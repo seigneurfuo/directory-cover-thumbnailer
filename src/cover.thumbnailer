@@ -1,3 +1,0 @@
-[Thumbnailer Entry]
-Exec=python /usr/bin/cover.py %u %o %s
-MimeType=inode/directory
