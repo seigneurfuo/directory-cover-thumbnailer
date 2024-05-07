@@ -1,4 +1,8 @@
-dist/PKGBUILD/pkg/
-dist/PKGBUILD/src/
-dist/PKGBUILD/*.pkg.tar.x
-dist/PKGBUILD/cover.py
+packaging/PKGBUILD/pkg/
+packaging/PKGBUILD/src/
+packaging/PKGBUILD/*.pkg.tar.x
+packaging/PKGBUILD/cover.py
+
+packaging/fedora/noarch/
+packaging/fedora/*.rpm
+packaging/fedora/*.log
